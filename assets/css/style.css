@@ -1,0 +1,20 @@
+body{
+    background: url(../images/GoT\ Background.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    color: black;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px red;
+}
+
+#start{
+    font-size: 100px;
+}
