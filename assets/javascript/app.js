@@ -82,10 +82,26 @@ $(document).ready(function() {
     ]
 
     // Test to see if array of questions was inputted correctly
-    for (var x = 0; x<questions.length; x++){
-        console.log(questions[x]);
+    // for (var x = 0; x<questions.length; x++){
+    //     console.log(questions[x]);
+    // }
+
+    // create question contents according to question count
+	function questionContent() {
+	// a for loop would be cool here...
+    $(".jumbotron").append("<p><strong>" + 
+    	questions[questionCounter].question + "</p><p class='choices'>" + 
+		questions[questionCounter].choices[0] + "</p><p class='choices'>" + 
+    	questions[questionCounter].choices[1] + "</p><p class='choices'>" + 
+    	questions[questionCounter].choices[2] + "</p><p class='choices'>" + 
+		questions[questionCounter].choices[3] + "</strong></p>");
     }
 
+    // user guessed correctly
+    function userWin () {
+        $()
+    }
+    
 
 
 
