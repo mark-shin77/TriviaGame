@@ -99,9 +99,27 @@ $(document).ready(function() {
 
     // user guessed correctly
     function userWin () {
-        $()
+        $(".jumbotron").html("<p>Correct!<p>");
+        correctGuess++;
+        var correctAnswer = questions.[questionCounter].correctAnswer;
+        $(".jumbotron").append("<p>The answer was" + correctAnswer 
+            + "</p>" + questions[questionCounter].image);
+        setTimeout(nextQuestion, 4000);
+        questionCounter++;
+    }
+
+    //user guessed incorrectly
+    function userLoss() {
+        $(".jumbotron").html("<p>Sorry, maybe next time!</p>");
+        wrongGuess++;
+        var correctAnswer = questions.[questionCounter].correctAnswer;
+        $(".jumbotron").append("<p>The answer was" + correctAnswer 
+            + "</p>" + questions[questionCounter].image);
+        setTimeout(nextQuestion, 4000);
+        questionCounter++;
     }
     
+    //timeout
 
 
 
