@@ -166,7 +166,7 @@ $(document).ready(function() {
             if (time > 0){
                 time--;
             }
-            $("timer").html("<strong>" + time + "</strong>");
+            $("#countdown").html("<strong>" + time + "</strong>");
         }
     }
 
@@ -174,7 +174,7 @@ $(document).ready(function() {
     function nextQuestion () {
         if (questionCounter < questions.length) {
             time = 15;
-            $(".jumbotron").html("<p>You have " + time + " seconds left! </p>");
+            $(".jumbotron").html("<p>You have <span id=countdown><strong>" + time + "</strong></span id = countdown> seconds left! </p>");
             questionContent();
             timer();
             userTimeout();
