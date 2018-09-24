@@ -96,18 +96,19 @@ $(document).ready(function() {
     	questions[questionCounter].choices[2] + "</p><p class='choices'>" + 
 		questions[questionCounter].choices[3] + "</strong></p>");
     }
+    
 
     // user guessed correctly
     function userWin() {
         $(".jumbotron").html("<p>Correct!<p>");
         correctGuess++;
         var correctAnswer = questions[questionCounter].correctAnswer;
-        $(".jumbotron").append("<p>The answer was <span class='answer'>" + correctAnswer 
-            + questions[questionCounter].image + "</span></p>");
+        $(".jumbotron").append("<p>The answer was " + correctAnswer 
+            + "</p>" + questions[questionCounter].image);
         setTimeout(nextQuestion, 4000);
         questionCounter++;
     }
-    console.log(userWin());
+    // console.log(userWin());
 
     // user guessed incorrectly
     function userLoss() {
@@ -119,6 +120,7 @@ $(document).ready(function() {
         setTimeout(nextQuestion, 4000);
         questionCounter++;
     }
+    console.log(userLoss());
     
     // timeout
     function userTimeout (){

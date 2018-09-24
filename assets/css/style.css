@@ -19,8 +19,12 @@ h3 {
 #start{
     font-size: 500%;
     color: black;
+    text-align: center;
 }
-
+.jumbotron{
+    text-align: center;
+    align-content: center;
+}
 .bottom-text{
     text-align: right;
     padding: .5%;
