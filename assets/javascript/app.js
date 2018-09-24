@@ -114,7 +114,7 @@ $(document).ready(function() {
         $(".jumbotron").html("<p>Sorry, maybe next time!</p>");
         wrongGuess++;
         var correctAnswer = questions[questionCounter].correctAnswer;
-        $(".jumbotron").append("<p>The answer was " + correctAnswer 
+        $(".jumbotron").append("<p>The answer is " + correctAnswer 
             + "</p>" + questions[questionCounter].image);
         setTimeout(nextQuestion, 4000);
         questionCounter++;
@@ -127,7 +127,7 @@ $(document).ready(function() {
             $(".jumbotron").html("<p>You ran out of time ... </p>");
             wrongGuess++;
             var correctAnswer = questions[questionCounter].correctAnswer;
-            $(".jumbotron").append("<p>The answer was " + correctAnswer 
+            $(".jumbotron").append("<p>The answer is " + correctAnswer 
                 + "</p>" + questions[questionCounter].image);
             setTimeout(nextQuestion, 4000);
             questionCounter++;
