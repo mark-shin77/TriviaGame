@@ -14,21 +14,21 @@ $(document).ready(function() {
             question:"What is the name of Jon's direwolf?",
             choices: ["Grey Wind", "Lady", "Ghost", "Nymeria", "Summer", "Shaggydog"],
             correctAnswer: "Ghost",
-            image: "<img src='../images/ghost.jpg' class='jonWolf'>",
+            image: "<img src='../TriviaGame/assets/images/ghost.jpg' class='jonWolf'>",
         },
         {
             // Question 2
             question: "Which is not a Game of Thrones royal family name?",
             choices: ["Stark", "Tyrell", "Targaryen", "Baelish"],
             correctAnswer: "Baelish",
-            image: "<img src='../images/baelish.jpeg' class='baelish'>",
+            image: "<img src='../TriviaGame/assets/images/baelish.jpeg' class='baelish'>",
         },
         {
             // Question 3
             question: "Ayra's fighting style is called?",
             choices: ["Wolf Wield", "Water Dancing", "Stinger", "Slashing Steel"],
             correctAnswer:"Water Dancing",
-            image:"<img src='../images/arya.jpg' class='arya'>",
+            image:"<img src='../TriviaGame/assets/images/arya.jpg' class='arya'>",
         },
         {
             // Question 4
@@ -98,37 +98,53 @@ $(document).ready(function() {
     }
 
     // user guessed correctly
-    function userWin () {
+    function userWin() {
         $(".jumbotron").html("<p>Correct!<p>");
         correctGuess++;
-        var correctAnswer = questions.[questionCounter].correctAnswer;
-        $(".jumbotron").append("<p>The answer was" + correctAnswer 
-            + "</p>" + questions[questionCounter].image);
+        var correctAnswer = questions[questionCounter].correctAnswer;
+        $(".jumbotron").append("<p>The answer was <span class='answer'>" + correctAnswer 
+            + questions[questionCounter].image + "</span></p>");
         setTimeout(nextQuestion, 4000);
         questionCounter++;
     }
+    console.log(userWin());
 
-    //user guessed incorrectly
+    // user guessed incorrectly
     function userLoss() {
         $(".jumbotron").html("<p>Sorry, maybe next time!</p>");
         wrongGuess++;
-        var correctAnswer = questions.[questionCounter].correctAnswer;
-        $(".jumbotron").append("<p>The answer was" + correctAnswer 
+        var correctAnswer = questions[questionCounter].correctAnswer;
+        $(".jumbotron").append("<p>The answer was " + correctAnswer 
             + "</p>" + questions[questionCounter].image);
         setTimeout(nextQuestion, 4000);
         questionCounter++;
     }
     
-    //timeout
-
-
-
-    function nextQuestion () {
-        if (questionCounter < questions.length) {
-            time = 15;
-            $(".jumbotron").html("<p>You have" + time + "seconds left! </p>");
-            questionContent();
-            timer
+    // timeout
+    function userTimeout (){
+        if (time === 0) {
+            $(".jumbotron").html("<p>You ran out of time ... </p>");
+            wrongGuess++;
+            var correctAnswer = questions[questionCounter].correctAnswer;
+            $(".jumbotron").append("<p>The answer was " + correctAnswer 
+                + "</p>" + questions[questionCounter].image);
+            setTimeout(nextQuestion, 4000);
+            questionCounter++;
         }
     }
+
+    // results screen
+    function resultsScreen() {
+
+    }
+
+
+    // function nextQuestion () {
+    //     if (questionCounter < questions.length) {
+    //         time = 15;
+    //         $(".jumbotron").html("<p>You have" + time + "seconds left! </p>");
+    //         questionContent();
+    //         timer
+    //     }
+    // }
 });
