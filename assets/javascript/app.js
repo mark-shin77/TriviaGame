@@ -96,7 +96,17 @@ $(document).ready(function() {
     	questions[questionCounter].choices[2] + "</p><p class='choices'>" + 
 		questions[questionCounter].choices[3] + "</strong></p>");
     }
-    
+
+    // starting game 
+    $("#start")on('click', nextQuestion);
+
+    function startGame() {
+        $(".jumbotron").html("<p>You have <span id='timer'>" + time + "</span> seconds left!</p>");
+        $("#start").hide();
+        questionContent();
+        timer();
+        userTimeout();
+    }
 
     // user guessed correctly
     function userWin() {
@@ -183,7 +193,19 @@ $(document).ready(function() {
             resultsScreen();
         }
     }
-    console.log(questionCounter);
-    console.log(questions[questionCounter].correctAnswer);
 
+    // console.log(questionCounter);
+    // console.log(questions[questionCounter].correctAnswer);
+    // console.log(nextQuestion());
+
+    // restarting game
+    function reset (){
+        questionCounter = 0;
+        correctGuess = 0;
+        wrongGuess = 0;
+    }
+
+    $(".jumbotron").on('click', ".choices", function(){
+        
+    })
 });
