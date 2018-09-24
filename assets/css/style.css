@@ -35,3 +35,14 @@ img{
     height: 300px;
     width: auto;
 }
+
+.choices{
+    border: 1px solid black;
+    margin: 2% 35%;
+    text-align: center;
+}
+
+.choices:hover{
+    background-color: blue;
+    color: white;
+}

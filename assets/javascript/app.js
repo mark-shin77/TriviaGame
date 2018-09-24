@@ -41,43 +41,43 @@ $(document).ready(function() {
             // Question 5
             question: "Bran Stark is paralyzed following a fall, who pushed him?",
             choices: ["Tryon Lannister", "Jaime Lannister", "Cersei Lannister", "Joffrey Baratheon"],
-            correctAnswer: "Jamie Lannister",
-            image: "<img scr='../TriviaGame/assets/images/jaime.jpg' class='jaime'>",
+            correctAnswer: "Jaime Lannister",
+            image: "<img src='../TriviaGame/assets/images/jaime.jpg' class='jaime'>",
         },
         {
             // Question 6
             question: "According to Bran, chaos is ...",
             choices: ["a staircase", "a ladder", "inevitable", "a way of life"],
             correctAnswer: "a ladder",
-            image: "<img scr='../TriviaGame/assets/images/bran.jpg' class='bran'>",
+            image: "<img src='../TriviaGame/assets/images/bran.jpg' class='bran'>",
         },
         {
             // Question 7
             question: "What's the name of Arya Stark's sword?",
             choices: ["Oathkeeper", "Ice", "Needle", "Death"],
             correctAnswer: "Needle",
-            image: "<img scr='../TriviaGame/assets/images/needle.jpg' class='needle'>",
+            image: "<img src='../TriviaGame/assets/images/needle.jpg' class='needle'>",
         },
         {
             // Question 8
             question: "What's House Lannister's motto?",
             choices: ["Growing Strong", "Fire and Blood", "Hear Me Roar", "Winter is Coming"],
             correctAnswer: "Hear Me Roar",
-            image: "<img scr='../TriviaGame/assets/images/lannister.jpg' class='lannister'>",
+            image: "<img src='../TriviaGame/assets/images/lannister.jpg' class='lannister'>",
         },
         {
             // Question 9
             question: "Bran Stark has transformed into a seer called ...",
             choices: ["The All Seeing", "The Three-Eyed Raven", "The Younger", "Hodor"],
             correctAnswer: "The Three-Eyed Raven",
-            image: "<img scr='../TriviaGame/assets/images/raven.jpg' class='raven'>",
+            image: "<img src='../TriviaGame/assets/images/raven.jpg' class='raven'>",
         },
         {
             // Question 10
             question: "What disease was Jorah Mormont stricken with?",
             choices: ["Measles", "Greyscale", "Stone Skin", "Dragon Stone"],
             correctAnswer: "Greyscale",
-            image: "<img scr='../TriviaGame/assets/images/greyscale.jpg' class='greyscale'>",
+            image: "<img src='../TriviaGame/assets/images/greyscale.jpg' class='greyscale'>",
         },
     ]
 
@@ -98,15 +98,7 @@ $(document).ready(function() {
     }
 
     // starting game 
-    $("#start")on('click', nextQuestion);
-
-    function startGame() {
-        $(".jumbotron").html("<p>You have <span id='timer'>" + time + "</span> seconds left!</p>");
-        $("#start").hide();
-        questionContent();
-        timer();
-        userTimeout();
-    }
+    $("#start").on('click', nextQuestion);
 
     // user guessed correctly
     function userWin() {
@@ -181,6 +173,14 @@ $(document).ready(function() {
         }
     }
 
+    function startGame() {
+        $(".jumbotron").html("<p>You have <span id='timer'>" + time + "</span> seconds left!</p>");
+        $("#start").hide();
+        questionContent();
+        timer();
+        userTimeout();
+    }
+
     // getting to next question
     function nextQuestion () {
         if (questionCounter < questions.length) {
@@ -206,6 +206,14 @@ $(document).ready(function() {
     }
 
     $(".jumbotron").on('click', ".choices", function(){
-        
-    })
+        var userGuess = $(this).text();
+        if (userGuess === questions[questionCounter].correctAnswer) {
+            clearInterval(clock);
+            userWin();
+        } else {
+            clearInterval(clock);
+            userLoss();
+        }
+
+    });
 });
