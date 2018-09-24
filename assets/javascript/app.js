@@ -35,49 +35,49 @@ $(document).ready(function() {
             question: "Sandor Clegane is known as ...",
             choices: ["The Hound", "The Kingslayer", "The Beast", "The Mountain"],
             correctAnswer: "The Hound",
-            image: "<img src='../images/hound.jpg' class='hound'>",
+            image: "<img src='../TriviaGame/assets/images/hound.jpg' class='hound'>",
         },
         {
             // Question 5
             question: "Bran Stark is paralyzed following a fall, who pushed him?",
             choices: ["Tryon Lannister", "Jaime Lannister", "Cersei Lannister", "Joffrey Baratheon"],
             correctAnswer: "Jamie Lannister",
-            image: "<img scr='../images/jaime.jpg' class='jaime'>",
+            image: "<img scr='../TriviaGame/assets/images/jaime.jpg' class='jaime'>",
         },
         {
             // Question 6
             question: "According to Bran, chaos is ...",
             choices: ["a staircase", "a ladder", "inevitable", "a way of life"],
             correctAnswer: "a ladder",
-            image: "<img scr='../images/bran.jpg' class='bran'>",
+            image: "<img scr='../TriviaGame/assets/images/bran.jpg' class='bran'>",
         },
         {
             // Question 7
             question: "What's the name of Arya Stark's sword?",
             choices: ["Oathkeeper", "Ice", "Needle", "Death"],
             correctAnswer: "Needle",
-            image: "<img scr='../images/needle.jpg' class='needle'>",
+            image: "<img scr='../TriviaGame/assets/images/needle.jpg' class='needle'>",
         },
         {
             // Question 8
             question: "What's House Lannister's motto?",
             choices: ["Growing Strong", "Fire and Blood", "Hear Me Roar", "Winter is Coming"],
             correctAnswer: "Hear Me Roar",
-            image: "<img scr='../images/lannister.jpg' class='lannister'>",
+            image: "<img scr='../TriviaGame/assets/images/lannister.jpg' class='lannister'>",
         },
         {
             // Question 9
             question: "Bran Stark has transformed into a seer called ...",
             choices: ["The All Seeing", "The Three-Eyed Raven", "The Younger", "Hodor"],
             correctAnswer: "The Three-Eyed Raven",
-            image: "<img scr='../images/raven.jpg' class='raven'>",
+            image: "<img scr='../TriviaGame/assets/images/raven.jpg' class='raven'>",
         },
         {
             // Question 10
             question: "What disease was Jorah Mormont stricken with?",
             choices: ["Measles", "Greyscale", "Stone Skin", "Dragon Stone"],
             correctAnswer: "Greyscale",
-            image: "<img scr='../images/greyscale.jpg' class='greyscale'>",
+            image: "<img scr='../TriviaGame/assets/images/greyscale.jpg' class='greyscale'>",
         },
     ]
 
@@ -120,7 +120,7 @@ $(document).ready(function() {
         setTimeout(nextQuestion, 4000);
         questionCounter++;
     }
-    console.log(userLoss());
+    // console.log(userLoss());
     
     // timeout
     function userTimeout (){
@@ -137,16 +137,53 @@ $(document).ready(function() {
 
     // results screen
     function resultsScreen() {
+        if (correctGuess === questions.length) {
+            var endMessage = "Amazing! You're a true fan";
+            var bottomText = "#trueFan";
+        } else if (correctGuess > wrongGuess) {
+            var endMessage = "You could do better ...";
+            var bottomText = "Time to get an HBO subscription";
+        } else {
+            var endMessage = "Maybe you should watch the series then try again ...";
+            var bottomText = "#scrub";
+        }
+        $(".jumbotron").html("<p>" + endMessage + "</p>" + "<p>You got <strong>" + 
+            correctGuess + "</strong> correct.</p>" + "<p>You got <strong>" 
+            + wrongGuess + "</strong> wrong. </p>");
+        $(".jumbotron").append("<h1 id='start'>Try again?</h1>");
+        $("#bottomText").html(bottomText);
+        gameReset();
+        $("#start").on('click', nextQuestion);
+        }
 
+    // 15 second timer on each question
+    function timer () {
+        clock=setInterval(countDown, 1000);
+        function countDown(){
+            if (time < 1){
+                clearInterval(clock);
+                userTimeout();
+            }
+            if (time > 0){
+                time--;
+            }
+            $("timer").html("<strong>" + time + "</strong>");
+        }
     }
 
+    // getting to next question
+    function nextQuestion () {
+        if (questionCounter < questions.length) {
+            time = 15;
+            $(".jumbotron").html("<p>You have" + time + "seconds left! </p>");
+            questionContent();
+            timer();
+            userTimeout();
+        } else {
+            resultsScreen();
+        }
+    }
+    console.log(questionCounter);
+    console.log(questions[questionCounter].correctAnswer);
 
-    // function nextQuestion () {
-    //     if (questionCounter < questions.length) {
-    //         time = 15;
-    //         $(".jumbotron").html("<p>You have" + time + "seconds left! </p>");
-    //         questionContent();
-    //         timer
-    //     }
-    // }
 });
