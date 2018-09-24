@@ -123,4 +123,12 @@ $(document).ready(function() {
 
 
 
+    function nextQuestion () {
+        if (questionCounter < questions.length) {
+            time = 15;
+            $(".jumbotron").html("<p>You have" + time + "seconds left! </p>");
+            questionContent();
+            timer
+        }
+    }
 });
