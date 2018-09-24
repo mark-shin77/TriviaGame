@@ -97,9 +97,6 @@ $(document).ready(function() {
 		questions[questionCounter].choices[3] + "</strong></p>");
     }
 
-    // starting game 
-    $("#start").on('click', nextQuestion);
-
     // user guessed correctly
     function userWin() {
         $(".jumbotron").html("<p>Correct!<p>");
@@ -173,19 +170,11 @@ $(document).ready(function() {
         }
     }
 
-    function startGame() {
-        $(".jumbotron").html("<p>You have <span id='timer'>" + time + "</span> seconds left!</p>");
-        $("#start").hide();
-        questionContent();
-        timer();
-        userTimeout();
-    }
-
     // getting to next question
     function nextQuestion () {
         if (questionCounter < questions.length) {
             time = 15;
-            $(".jumbotron").html("<p>You have" + time + "seconds left! </p>");
+            $(".jumbotron").html("<p>You have " + time + " seconds left! </p>");
             questionContent();
             timer();
             userTimeout();
@@ -199,11 +188,21 @@ $(document).ready(function() {
     // console.log(nextQuestion());
 
     // restarting game
-    function reset (){
+    function gameReset (){
         questionCounter = 0;
         correctGuess = 0;
         wrongGuess = 0;
     }
+
+    function startGame() {
+        $(".jumbotron").html("<p>You have <span id='timer'>" + time + "</span> seconds left!</p>");
+        $("#start").hide();
+        questionContent();
+        timer();
+        userTimeout();
+    }
+    // starting game 
+    $("#start").on('click', nextQuestion);
 
     $(".jumbotron").on('click', ".choices", function(){
         var userGuess = $(this).text();
@@ -216,4 +215,5 @@ $(document).ready(function() {
         }
 
     });
+
 });
