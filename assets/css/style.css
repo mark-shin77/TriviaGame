@@ -20,11 +20,13 @@ h3 {
     font-size: 500%;
     color: black;
     text-align: center;
+    cursor: pointer;
 }
 .jumbotron{
     text-align: center;
     align-content: center;
 }
+
 .bottom-text{
     text-align: right;
     padding: .5%;
@@ -40,6 +42,7 @@ img{
     border: 1px solid black;
     margin: 2% 35%;
     text-align: center;
+    cursor: pointer;
 }
 
 .choices:hover{
@@ -49,4 +52,9 @@ img{
 
 p{
     font-size: 20px;
+}
+
+.gameInfo{
+    text-align: center;
+    color: white;
 }
