@@ -130,7 +130,7 @@ $(document).ready(function() {
             var correctAnswer = questions[questionCounter].correctAnswer;
             $(".jumbotron").append("<p>The answer is " + correctAnswer 
                 + "</p>" + questions[questionCounter].image);
-            setTimeout(nextQuestion, 2000);
+            setTimeout(nextQuestion, 3000);
             questionCounter++;
         }
     }
