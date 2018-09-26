@@ -33,9 +33,9 @@ h3 {
     background-color: black;
 }
 
-restart{
-    color: black;
-    font-size: 400%;
+#restart{
+    color: white;
+    cursor: pointer;
 }
 
 .jumbotron{
