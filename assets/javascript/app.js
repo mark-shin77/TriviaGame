@@ -150,7 +150,7 @@ $(document).ready(function() {
         $(".jumbotron").html("<p>" + endMessage + "</p>" + "<p>You got <strong>" + 
             correctGuess + "</strong> correct.</p>" + "<p>You got <strong>" 
             + wrongGuess + "</strong> wrong. </p>");
-        $(".jumbotron").append("<h1 id='restart'>Try again?</h1>");
+        $(".jumbotron").append("<h1 class= 'btn btn-primary' id='restart'>Try again?</h1>");
         $(".gameInfo").html("Didn't get the result you wanted? Click try again to start over!")
         $("#under").html(bottomText);
         gameReset();

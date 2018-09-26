@@ -22,18 +22,22 @@ h3 {
     text-align: center;
     cursor: pointer;
 }
-#start:hover {
-    background-color: rgb(32, 161, 236);
-    margin: 2% 36%;
+
+.btn{
+    height: 150px;
+    width: 700px;
+    font-size: 75px;
+    font-weight: bold;
 }
+.btn:hover{
+    background-color: black;
+}
+
 restart{
     color: black;
     font-size: 400%;
 }
-#restart:hover{
-    background-color: rgb(32, 161, 236);
-    margin: 2% 25%;
-}
+
 .jumbotron{
     text-align: center;
     align-content: center;
