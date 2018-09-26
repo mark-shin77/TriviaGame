@@ -94,7 +94,8 @@ $(document).ready(function() {
 		questions[questionCounter].choices[0] + "</p><p class='choices'>" + 
     	questions[questionCounter].choices[1] + "</p><p class='choices'>" + 
     	questions[questionCounter].choices[2] + "</p><p class='choices'>" + 
-		questions[questionCounter].choices[3] + "</strong></p>");
+        questions[questionCounter].choices[3] + "</strong></p>");
+    $(".gameInfo").html("Don't take too long ... Winter is coming!")
     }
 
     // user guessed correctly
@@ -102,9 +103,9 @@ $(document).ready(function() {
         $(".jumbotron").html("<p>Correct!<p>");
         correctGuess++;
         var correctAnswer = questions[questionCounter].correctAnswer;
-        $(".jumbotron").append("<p>The answer was " + correctAnswer 
-            + "</p>" + questions[questionCounter].image);
-        setTimeout(nextQuestion, 4000);
+        $(".jumbotron").append("<p>The answer was " + "<strong>" + correctAnswer 
+            + "</strong></p>" + questions[questionCounter].image);
+        setTimeout(nextQuestion, 1000);
         questionCounter++;
     }
     // console.log(userWin());
@@ -114,9 +115,9 @@ $(document).ready(function() {
         $(".jumbotron").html("<p>Sorry, maybe next time!</p>");
         wrongGuess++;
         var correctAnswer = questions[questionCounter].correctAnswer;
-        $(".jumbotron").append("<p>The answer is " + correctAnswer 
-            + "</p>" + questions[questionCounter].image);
-        setTimeout(nextQuestion, 4000);
+        $(".jumbotron").append("<p>The answer is " + "<strong>" + correctAnswer 
+            + "</strong></p>" + questions[questionCounter].image);
+        setTimeout(nextQuestion, 1000);
         questionCounter++;
     }
     // console.log(userLoss());
@@ -129,7 +130,7 @@ $(document).ready(function() {
             var correctAnswer = questions[questionCounter].correctAnswer;
             $(".jumbotron").append("<p>The answer is " + correctAnswer 
                 + "</p>" + questions[questionCounter].image);
-            setTimeout(nextQuestion, 4000);
+            setTimeout(nextQuestion, 2000);
             questionCounter++;
         }
     }
@@ -149,10 +150,11 @@ $(document).ready(function() {
         $(".jumbotron").html("<p>" + endMessage + "</p>" + "<p>You got <strong>" + 
             correctGuess + "</strong> correct.</p>" + "<p>You got <strong>" 
             + wrongGuess + "</strong> wrong. </p>");
-        $(".jumbotron").append("<h1 id='start'>Try again?</h1>");
-        $("#bottomText").html(bottomText);
+        $(".jumbotron").append("<h1 id='restart'>Try again?</h1>");
+        $(".gameInfo").html("Didn't get the result you wanted? Click try again to start over!")
+        $("#under").html(bottomText);
         gameReset();
-        $("#start").on('click', nextQuestion);
+        $("#restart").on('click', nextQuestion);
         }
 
     // 15 second timer on each question
@@ -167,6 +169,7 @@ $(document).ready(function() {
                 time--;
             }
             $("#countdown").html("<strong>" + time + "</strong>");
+            console.log(time);
         }
     }
 
@@ -213,7 +216,8 @@ $(document).ready(function() {
             clearInterval(clock);
             userLoss();
         }
-
+        console.log(clock);
     });
+
 
 });
